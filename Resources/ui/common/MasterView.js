@@ -1,13 +1,14 @@
 function MasterView() {
 	
-	Ti.include('../../lib/ti/global.js');
-	var ActionBarView = require('../../ui/common/shared/ActionBarView');
+	Ti.include('/lib/ti/global.js');
+	
+	var ActionBarView = require('/ui/common/shared/ActionBarView');
 	
 	var self = new ui.View({
 		backgroundColor:'white'
 	});
 	
-	var SnapView = require('../../ui/common/snapsView/SnapsScrollableTableView');
+	var SnapView = require('/ui/common/snapsView/SnapsScrollableTableView');
 	
 	var snapsTable = new SnapView();
 	

@@ -75,7 +75,7 @@ function MasterDetailView(self)
 
 	detailContainerWindow.add(bottomBar.viewProxy);
 	
-	Ti.include('../../../ui/common/snapCrud/selectorActions.js');
+	Ti.include('/ui/common/snapCrud/selectorActions.js');
 	
 	bottomBar.addEventListener('buttonPress', function(e) {
 		//alert('a'+JSON.stringify(detailView.data['snap']['___id']));
@@ -111,8 +111,8 @@ function MasterDetailView(self)
 
 function ApplicationWindow() {
 	
-	Ti.include('../../../lib/ti/global.js');
-
+	//Ti.include('../../../lib/ti/global.js');
+	parseapi = require('com.forge42.parseapi');
 
 	//create object instance //this is the main window
 	var self = Ti.UI.createWindow({

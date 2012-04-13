@@ -116,7 +116,7 @@ function ModifySnap(btnAction, self, data)
 
 function modifyRecord(which, self, id)
 {
-	Ti.include('../../../lib/thirdParty/taffy.js');	
+	Ti.include('/lib/thirdParty/taffy.js');	
 	var t = which + " Snap";
 	var w = which.toLowerCase();
 	var m = "Are you sure you want to " + w + " this snap?";

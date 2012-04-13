@@ -1,6 +1,6 @@
 function doSnap() {
 
-	Ti.include('../../../lib/ti/global.js');
+	Ti.include('/lib/ti/global.js');
 	var ActionBarView = require('/ui/common/shared/ActionBarView');
 	
 	var self = new ui.Window({

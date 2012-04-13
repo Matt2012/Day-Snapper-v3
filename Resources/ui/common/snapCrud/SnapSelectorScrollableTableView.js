@@ -1,6 +1,6 @@
 function SnapSelectorScrollableTableView() {
 	
-	Ti.include('../../../lib/ti/global.js');
+	Ti.include('/lib/ti/global.js');
 	
 	var self = Ti.UI.createView({
 		backgroundColor:'#FFFFFF',

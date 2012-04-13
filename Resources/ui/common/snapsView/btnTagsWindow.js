@@ -1,8 +1,8 @@
 function btnTagsWindow() {
 
-	Ti.include('../../../lib/ti/global.js');
-	Ti.include('../../ui/common/selectorActions.js');
-	var ActionBarView = require('../../ui/common/shared/ActionBarView');
+	Ti.include('/lib/ti/global.js');
+	Ti.include('/ui/common/snapCrud/selectorActions.js');
+	var ActionBarView = require('/ui/common/shared/ActionBarView');
 	
 	var self = new ui.Window({
 		backgroundColor:'white',
@@ -10,7 +10,7 @@ function btnTagsWindow() {
 		navBarHidden:true
 	});
 	
-	var TagSelectorScrollableTableView = require('../../ui/common/TagSelectorScrollableTableView');
+	var TagSelectorScrollableTableView = require('/ui/common/snapsView/TagSelectorScrollableTableView');
 	
 	var TSSTableView = new TagSelectorScrollableTableView();
 	

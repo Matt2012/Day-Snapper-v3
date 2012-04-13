@@ -1,5 +1,6 @@
 // all the magic happens here
-Ti.include('../../../ui/common/settings/settingsInclude.js');
+Ti.include('/lib/ti/global.js');
+Ti.include('/ui/common/settings/settingsInclude.js');
 
 function addPreference(options) {
 	var self = options.self;
@@ -124,7 +125,7 @@ function addPreference(options) {
 // the following code is both the logic and examples of using it
 function settingsWindow() {
 	
-	Ti.include('../../../lib/ti/global.js');
+	//Ti.include('../../../lib/ti/global.js');
 	var ActionBarView = require('/ui/common/shared/ActionBarView');
 	parseapi = require('com.forge42.parseapi');
 	

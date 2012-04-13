@@ -1,7 +1,7 @@
 function SnapView() {
 	
-	Ti.include('../../../lib/ti/global.js');	
-	Ti.include('../../../lib/thirdParty/taffy.js');	
+	Ti.include('/lib/ti/global.js');	
+	Ti.include('/lib/thirdParty/taffy.js');	
 	parseapi = require('com.forge42.parseapi');
 	var parseSync = require('/lib/ti/parseSync');
 	

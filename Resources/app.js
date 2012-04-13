@@ -20,6 +20,9 @@ else if (Ti.Platform.osname === 'mobileweb') {
 else {
 	//Titanium.include('/lib/taffy.js');
 	
+	Ti.include('/lib/ti/global.js');
+	Ti.include('/lib/thirdParty/taffy.js');	
+	
 	//determine platform and form factor and render approproate components
 	var osname = Ti.Platform.osname,
 		version = Ti.Platform.version,

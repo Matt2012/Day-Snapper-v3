@@ -1,6 +1,6 @@
 function AuthenticationView() {
 	
-	Ti.include('../../../lib/ti/global.js');
+	Ti.include('/lib/ti/global.js');
 
 	var ActionBarView = require('/ui/common/shared/ActionBarView');
 		
@@ -61,11 +61,6 @@ function AuthenticationView() {
 			register: {
 				title:'Register',
 				width:120
-			},
-			login: {
-				title:'Login',
-				width:0,
-				show:false
 			}
 		}
 	});

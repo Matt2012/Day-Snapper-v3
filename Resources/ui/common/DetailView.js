@@ -1,6 +1,6 @@
 function DetailView() {
-	var moment = require('../../lib/thirdParty/moment.min');
-	Ti.include('../../lib/ti/global.js');
+	var moment = require('/lib/thirdParty/moment.min');
+	//Ti.include('../../lib/ti/global.js');
 	
 	var self = Ti.UI.createScrollView({
 		backgroundColor:'#CCCCCC',

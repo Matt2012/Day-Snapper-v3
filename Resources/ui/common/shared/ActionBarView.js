@@ -1,6 +1,6 @@
 function ActionBarView(args) {
 	
-	Ti.include('../../../lib/ti/global.js');
+	Ti.include('/lib/ti/global.js');
 
 	if(typeof args.pos !== 'undefined' && args.pos === 'top')
 	{
@@ -75,8 +75,10 @@ function ActionBarView(args) {
 			else
 			{
 				self.add(new ui.ImageView('../../images/appc_white.png', {
-			left:5
-		}));
+					left:5,
+					width:161,
+					height:32
+				}));
 			}
 		}
 	}

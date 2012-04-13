@@ -10,10 +10,10 @@
     <sdk-version>1.8.2</sdk-version>
     <id>coop.tiny.daysnapper</id>
     <name>Day Snapper</name>
-    <version>0.516</version>
+    <version>0.520</version>
     <publisher>matt</publisher>
     <url>http://daysnapper.tiny.coop</url>
-    <description>not specified</description>
+    <description>Private Journal, Social Network</description>
     <copyright>2012 by matt</copyright>
     <icon>appicon.png</icon>
     <persistent-wifi>false</persistent-wifi>
@@ -21,7 +21,7 @@
     <statusbar-style>default</statusbar-style>
     <statusbar-hidden>false</statusbar-hidden>
     <fullscreen>false</fullscreen>
-    <navbar-hidden>false</navbar-hidden>
+    <navbar-hidden>true</navbar-hidden>
     <analytics>true</analytics>
     <guid>01662947-8375-4f32-8f7d-5afae3d16693</guid>
     <iphone>

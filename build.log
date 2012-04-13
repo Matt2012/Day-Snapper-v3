@@ -5,12 +5,8 @@ Logfile initialized
 [INFO] Titanium SDK version: 1.8.2 (02/23/12 17:46 59b3a90)
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[DEBUG] Device connected... (waited 15 seconds)
-[DEBUG] waited 15.119000 seconds on emulator to get ready
-[INFO] Waiting for the Android Emulator to become available
+[DEBUG] Device connected... (waited 0 seconds)
+[DEBUG] waited 0.040000 seconds on emulator to get ready
 [DEBUG] coop.tiny.daysnapper installed? True
 [INFO] Fastdev server running, deploying in Fastdev mode
 [INFO] Copying project resources..
@@ -26,3 +22,4 @@ Logfile initialized
 [INFO] Launching application ... Day Snapper
 [TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=coop.tiny.daysnapper/.DaySnapperActivity }
 
+[INFO] Relaunched Day Snapper ... Application should be running.
