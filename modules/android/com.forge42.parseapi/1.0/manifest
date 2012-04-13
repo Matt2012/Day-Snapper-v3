@@ -1,0 +1,17 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 1.0
+description: ParseAPI
+author: Forge42
+license: See LICENSE file for more information
+copyright: Copyright (c) 2011 Forge42
+
+
+# these should not be edited
+name: parseapi
+moduleid: com.forge42.parseapi
+guid: 10162ffd-d6d7-4c2e-8b05-e4568f991056
+platform: android
+minsdk: 1.7.2
