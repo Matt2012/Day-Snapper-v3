@@ -33,7 +33,7 @@ function AuthenticationView() {
 	});
 	
 	registerV.addEventListener('loggedIn', function(user) {
-		self.fireEvent('authenticated',user)
+		self.fireEvent('authenticated',user);
 		return false;
 	});
 	

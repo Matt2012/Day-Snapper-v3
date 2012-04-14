@@ -79,53 +79,55 @@ function LoginView() {
 	var loginButton = Titanium.UI.createButton(loginButtonArgs);
 		
 	loginButton.addEventListener('click', function() {
-	emailTextField.blur();
-	passwordTextField.blur();
-	if( emailTextField.value === "" || passwordTextField.value === "" )
-	{			
-		alert("Please fill in a username & password");
-		return false;
-	}
-	
-	Ti.API.info("Running Test: PFUser Login");
-	
-	var loading = Titanium.UI.createLabel({
-		text:"Logging In, Please wait...",
-		width:'auto',
-		height:40,
-		width:"90%",
-		top: 335,
-		color:'black',
-		font:{fontSize:14, fontWeight: 'bold' },
-		textAlign:'center'
-	});
-	
-	loginButton.hide();
-	self.add(loading);
-	
-	//start login
-	parseapi = require('com.forge42.parseapi');
-	//Synchronous User Login
-	// returns (boolean)succeeded, (integer or null)errorCode, (string or null)error, (PFUser or null) user
-	var result = parseapi.PFUserLogin( {
-		username: emailTextField.value,
-		password: passwordTextField.value
-	});
-					
-	//alert(result.succeeded );
-	if( result.succeeded ) {
-		Ti.API.info("Successfully logged in!");
-		var user = result.user;
-		Ti.API.info( "Logged In as: " + user.objectForKey("username") ); // show the logged in user
-		Ti.App.Properties.setProperty('userID',parseapi.PFUserCurrentUser());
-		Ti.App.Properties.setProperty('userName',user.objectForKey("name"));
-		self.fireEvent('loggedIn',user);
-	} else {
-		Ti.API.info("Could not login with credentials. ErrorCode: " + result.errorCode + " Error: " + result.error);
-		loginButton.show();
-		loading.hide();
-		alert("Could not recognise that email and password combination");
-	}
+		emailTextField.blur();
+		passwordTextField.blur();
+		if( emailTextField.value === "" || passwordTextField.value === "" )
+		{			
+			alert("Please fill in a username & password");
+			return false;
+		}
+		
+		Ti.API.info("Running Test: PFUser Login");
+		
+		var loading = Titanium.UI.createLabel({
+			text:"Logging In, Please wait...",
+			width:'auto',
+			height:40,
+			width:"90%",
+			top: 335,
+			color:'black',
+			font:{fontSize:14, fontWeight: 'bold' },
+			textAlign:'center'
+		});
+		
+		loginButton.hide();
+		self.add(loading);
+		
+		//start login
+		parseapi = require('com.forge42.parseapi');
+		//Synchronous User Login
+		// returns (boolean)succeeded, (integer or null)errorCode, (string or null)error, (PFUser or null) user
+		var result = parseapi.PFUserLogin( {
+			username: emailTextField.value,
+			password: passwordTextField.value
+		});
+						
+		//alert(result.succeeded );
+		if( result.succeeded ) {
+			Ti.API.info("Successfully logged in!");
+			var user = result.user;
+			Ti.API.info( "Logged In as: " + user.objectForKey("username") ); // show the logged in user
+			//var user = parseapi.PFUserCurrentUser(user);
+			Ti.API.info("User ---- "+JSON.stringify(result));
+			//Ti.App.Properties.setProperty('userID',user.objectForKey("objectId"));
+			//Ti.App.Properties.setProperty('userName',user.objectForKey("name"));
+			self.fireEvent('loggedIn',user);
+		} else {
+			Ti.API.info("Could not login with credentials. ErrorCode: " + result.errorCode + " Error: " + result.error);
+			loginButton.show();
+			loading.hide();
+			alert("Could not recognise that email and password combination");
+		}
 		
 	});
 	
