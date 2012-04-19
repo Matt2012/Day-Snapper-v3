@@ -1,15 +1,17 @@
 Logfile initialized
 [INFO] logfile = D:\Users\Matt\Dropbox\Titanium Workspace\daysnapper\build.log
-[DEBUG] C:\Users\Matt\AppData\Roaming\Titanium\mobilesdk\win32\1.8.2\android\builder.py simulator Day Snapper D:\Program Files\Android\android-sdk D:\Users\Matt\Dropbox\Titanium Workspace\daysnapper coop.tiny.daysnapper 20 HVGA
+[DEBUG] C:\Users\Matt\AppData\Roaming\Titanium\mobilesdk\win32\2.0.1.GA2\android\builder.py simulator Day Snapper D:\Program Files\Android\android-sdk D:\Users\Matt\Dropbox\Titanium Workspace\daysnapper coop.tiny.daysnapper 20 HVGA
 [INFO] Building Day Snapper for Android ... one moment
-[INFO] Titanium SDK version: 1.8.2 (02/23/12 17:46 59b3a90)
+[INFO] Titanium SDK version: 2.0.1 (04/12/12 16:33 999c68a)
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.040000 seconds on emulator to get ready
+[DEBUG] waited 0.032000 seconds on emulator to get ready
 [DEBUG] coop.tiny.daysnapper installed? True
 [INFO] Fastdev server running, deploying in Fastdev mode
+[INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
+[TRACE] COPYING MODIFIED FILE: D:\Users\Matt\Dropbox\Titanium Workspace\daysnapper\Resources\ui\common\authentication\RegisterView.js => D:\Users\Matt\Dropbox\Titanium Workspace\daysnapper\build\android\bin\assets\Resources\ui\common\authentication\RegisterView.js
 [INFO] Tiapp.xml unchanged, skipping class generation
 [DEBUG] Processing Android resource drawables
 [DEBUG] found drawable-long-port-hdpi splash screen at D:\Users\Matt\Dropbox\Titanium Workspace\daysnapper\Resources\android\images\res-long-port-hdpi\default.png
@@ -22,4 +24,3 @@ Logfile initialized
 [INFO] Launching application ... Day Snapper
 [TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=coop.tiny.daysnapper/.DaySnapperActivity }
 
-[INFO] Relaunched Day Snapper ... Application should be running.

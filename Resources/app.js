@@ -1,7 +1,4 @@
 /*
- * A master detail view, utilizing a native table view component and platform-specific UI and navigation. 
- * A starting point for a navigation-based application with hierarchical data, or a stack of windows. 
- * Requires Titanium Mobile SDK 1.8.0+.
  * 
  * In app.js, we generally take care of a few things:
  * - Bootstrap the application with any data we need
@@ -10,15 +7,9 @@
  *  
  */
 
-//bootstrap and check dependencies
-if (Ti.version < 1.8 ) {
-	alert('Sorry - this application template requires Titanium Mobile SDK 1.8 or later');
-}
-else if (Ti.Platform.osname === 'mobileweb') {
-	alert('Mobile web is not yet supported by this template');
-}
-else {
-	//Titanium.include('/lib/taffy.js');
+var Cloud = require('ti.cloud');
+Cloud.debug = true;  // optional; if you add this line, set it to false for production
+
 	
 	Ti.include('/lib/ti/global.js');
 	Ti.include('/lib/thirdParty/taffy.js');	
@@ -47,5 +38,10 @@ else {
 			Window = require('ui/handheld/ios/ApplicationWindow');
 		}
 	}
+	
+	if(osname !== 'android')
+	{
+		//var testflight = require("com.0x82.testflight");
+	}
+	
 	new Window().open();
-}

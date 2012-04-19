@@ -72,37 +72,11 @@ function MasterView() {
 		var btnAction = e.id;
 		if(btnAction == 'btnSearch')
 		{
-			alert('search coming soon..');
-			//hide drop down
-			
-			//show search (add view)
-			
-			
+			snapsTable.fireEvent('doSearch');
 		}
 		else if(btnAction == 'btnSync')
 		{
-			alert('sync coming soon..');
-			//check if network
-			
-			//---------------------------------------------start sync
-			
-			//start activity indicator
-			
-			//get latest update date from properties
-			
-			//download all changes from the date from cloud
-			
-			//show progress bar
-			
-			//grab all local changes from device
-			
-			//where same id in both list remove update with oldest date from that list
-			
-			//make local changes
-			
-			//make remote changes
-			
-			
+			snapsTable.fireEvent('doSync');
 		}
 		else
 		{

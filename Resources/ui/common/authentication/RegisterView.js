@@ -13,7 +13,7 @@ function RegisterView() {
 	});
 	
 	var nameLabel = Titanium.UI.createLabel({
-	    text:"Name: ",
+	    text:"First Name: ",
 	    height:'auto',
 	    width:'auto',
 	    top: 45,
@@ -133,61 +133,30 @@ function RegisterView() {
 		signUpButton.hide();
 		self.add(loading);
 
-		Ti.API.info("Running Test: PFUser Sign Up" );
-		
-		parseapi = require('com.forge42.parseapi');
-		
-		// PFUser objects inherit all the methods of PFObject
-		var pfUser = parseapi.createPFUser();	// first create a pfUser object
-		
-		// initialize the signup process with credentials
-		pfUser.initSignUp( {
-							username: emailTextField.value,
-							password: passwordTextField.value,
-							email: emailTextField.value
-						});
-		
-		// you can set objects just like PFObject before finishing the sign up process
-		//pfUser.setObject("name", nameTextField.value);
-		
-		
-		// Synchronous sign up function, logs you in after it finishes
-		// returns (boolean)succeeded, (integer or null)errorCode, (string or null)error
-		var result = pfUser.finishSignUp();
-		
-		if( result.succeeded ) {
-		
-			Ti.API.info("Successfully created a new user with id: " + pfUser.objectId);
-			
-			var user = parseapi.PFUserCurrentUser();
-			
-			Ti.API.info( "Logged In as: " + user.objectForKey("username") ); // show the logged in user
-			
-			Ti.App.Properties.setProperty('userID',parseapi.PFUserCurrentUser());
-			Ti.App.Properties.setProperty('userName',user.objectForKey("name"));
-			self.fireEvent('loggedIn',user);
-			
-			//do what we do for login
-			
-		
-		} else {
-			
-			Ti.API.info("Could not create new user. ErrorCode: " + result.errorCode + " Error: " + result.error);
-			if(result.error==202)
-			{
-				var msg = "This email already exists. Login directly or use the forgotten password screen.";
-			}
-			else
-			{
-				var msg = "We could not register this account. You can help by reporting this error:"+result.errorCode + ' ' + result.error;
-			}
-			alert(msg);
-			signUpButton.show();
-			loading.hide();
-			
-		}
-		
-		
+
+		var Cloud = require('ti.cloud');
+		Cloud.debug = true;  // optional; if you add this line, set it to false for production
+
+		Cloud.Users.create({
+			username: emailTextField.value,
+			password: passwordTextField.value,
+			first_name: nameTextField.value,
+			password_confirmation: passwordTextField.value
+		}, function (e) {
+			  if (e.success) {
+					  Ti.API.info("Successfully created a new user with id: " + e.users.id);
+					  Ti.API.info( "Logged In as: " + e.users.first_name );
+					  Ti.App.Properties.setProperty('userID',e.users.id);
+					  Ti.App.Properties.setProperty('userName',e.users.first_name);
+					  self.fireEvent('loggedIn',e.users);
+			  } else {
+				  	  // oops, something went wrong	
+					  Ti.API.info("Could not create new user. ErrorCode: " + e.code+ e.message);
+					  alert(e.message);
+					  signUpButton.show();
+					  loading.hide();
+				    }
+			});
 	});
 	
 	self.add(titleLabel);

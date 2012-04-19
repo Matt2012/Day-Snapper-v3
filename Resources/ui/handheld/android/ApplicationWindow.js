@@ -78,10 +78,10 @@ function MasterDetailView(self)
 	Ti.include('/ui/common/snapCrud/selectorActions.js');
 	
 	bottomBar.addEventListener('buttonPress', function(e) {
+		//e.id Tells us what button was pressed.
 		//alert('a'+JSON.stringify(detailView.data['snap']['___id']));
 		//alert('b'+JSON.stringify(detailView.data.snap));
-		//alert('c'+detailView.data['snap']['_id']);
-		//alert(e.id)
+		Ti.API.info('----------want to modify stuff from data---------'+JSON.stringify(detailView.data['snap']));
 		doAction('ModifySnap', e.id, detailView, detailView.data['snap']);
 	});
 	

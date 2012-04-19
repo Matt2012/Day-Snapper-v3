@@ -35,6 +35,28 @@ function ActionBarView(args) {
     });
     self.add(barBorder);
 	
+	
+	//Add Back Button
+	 var btnBackView = new ui.View({
+			width:20,
+			left:5,
+	});
+	
+	var btnBackImage = new ui.ImageView(iconPath('left','top'),{
+		left:5,
+		height:20,
+		width:20
+	});
+	
+	btnBackView.add(btnBackImage);
+
+	btnBackView.addEventListener('click', function(e) {
+		var win = Ti.UI.CurrentWindow;
+		win.close();
+	});
+	
+	self.add(btnBackView);
+
 
 	//title label or image if none provided
 	if (args.title) {
@@ -109,6 +131,32 @@ function ActionBarView(args) {
 				height:20,
 				width:20
 			});
+
+			if(buttonData.icon=='sync')
+			{
+				var a = Titanium.UI.createAnimation();
+				var t = Ti.UI.create2DMatrix();
+	
+				btnImage.addEventListener('click', function(e) {
+					for(i=0;i<1000;i++)
+					{
+						t = t.rotate(90);
+						a.transform = t;
+						a.duration = 1000;
+						btnImage.animate(a);
+					}
+				});
+				
+				btnImage.addEventListener('stopSpin', function(e) {
+					//t = t.rotate(0);
+					//a.transform = t;
+					//a.duration = 1;
+					//btnImage.animate(a);
+					btnImage.remove();
+					button.add(btnImage);
+				});
+			}
+
 			button.add(btnImage);
 		}
 		

@@ -1,4 +1,5 @@
 function LoginView() {
+	
 	var self = Ti.UI.createView();
 	
 	var titleLabel = Titanium.UI.createLabel({
@@ -103,32 +104,27 @@ function LoginView() {
 		loginButton.hide();
 		self.add(loading);
 		
-		//start login
-		parseapi = require('com.forge42.parseapi');
-		//Synchronous User Login
-		// returns (boolean)succeeded, (integer or null)errorCode, (string or null)error, (PFUser or null) user
-		var result = parseapi.PFUserLogin( {
-			username: emailTextField.value,
+		var Cloud = require('ti.cloud');
+		Cloud.debug = true;  // optional; if you add this line, set it to false for production
+
+		Cloud.Users.login({
+			login: emailTextField.value,
 			password: passwordTextField.value
+		}, function (e) {
+			if (e.success) {
+				var user = e.users[0];
+				Ti.API.info( "Logged In as: " + user.username ); // show the logged in user
+				Ti.API.info("User ---- "+JSON.stringify(user));
+				self.fireEvent('loggedIn',user);	
+			} else {
+				alert('Error:\\n' +
+					((e.error && e.message) || JSON.stringify(e)));	
+				Ti.API.info("Could not login with credentials. ErrorCode: " + e.code + " Error: " + e.message);
+				loginButton.show();
+				loading.hide();	
+			}
 		});
-						
-		//alert(result.succeeded );
-		if( result.succeeded ) {
-			Ti.API.info("Successfully logged in!");
-			var user = result.user;
-			Ti.API.info( "Logged In as: " + user.objectForKey("username") ); // show the logged in user
-			//var user = parseapi.PFUserCurrentUser(user);
-			Ti.API.info("User ---- "+JSON.stringify(result));
-			//Ti.App.Properties.setProperty('userID',user.objectForKey("objectId"));
-			//Ti.App.Properties.setProperty('userName',user.objectForKey("name"));
-			self.fireEvent('loggedIn',user);
-		} else {
-			Ti.API.info("Could not login with credentials. ErrorCode: " + result.errorCode + " Error: " + result.error);
-			loginButton.show();
-			loading.hide();
-			alert("Could not recognise that email and password combination");
-		}
-		
+				
 	});
 	
 	self.add(titleLabel);
@@ -139,6 +135,6 @@ function LoginView() {
 	self.add(loginButton);
 	
 	return self;
-};
+}
 
 module.exports = LoginView;

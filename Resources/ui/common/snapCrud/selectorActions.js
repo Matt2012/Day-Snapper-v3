@@ -101,10 +101,10 @@ function ModifySnap(btnAction, self, data)
 			alert('Editing coming soon.');
 		break;
 		case'btnArchive':
-			modifyRecord('Archive', self, data['___id']);
+			modifyRecord('Archive', self, data);
 		break;
 		case'btnDelete':
-			modifyRecord('Delete', self, data['___id']);
+			modifyRecord('Delete', self, data);
 		break;
 		case'btnTag':
 		    //alert('Going to modify record ' + data['___id'] + ' - ' + btnAction);
@@ -114,7 +114,7 @@ function ModifySnap(btnAction, self, data)
 }
 
 
-function modifyRecord(which, self, id)
+function modifyRecord(which, self, data)
 {
 	Ti.include('/lib/thirdParty/taffy.js');	
 	var t = which + " Snap";
@@ -131,15 +131,18 @@ function modifyRecord(which, self, id)
 	   //now you can use parameter e to switch/case   //cancel is 1 so must be 0
 	   if(e.index==0) {
 		  Titanium.API.info('Clicked button 0 (YES)');
+		  Ti.API.info('data at this point--- '+JSON.stringify(data));
+		  //return false;
 		  //hand this back using to trigger to close window and refresh table
 		  //alert("do taffy update");
 		  //if edit then go through the fields getting values.
 		  // TAFFY(db(id).update({status:w}));
-		  var data = {};
-		  data['id'] = id;
-		  data['updatedSnap'] = {status:w};
-		  data['updateSnapType'] = 'status';
-		  self.fireEvent('modifySnapAndRefresh_step1',data);
+		  //var data = {};
+		  var ndata = {};
+		  ndata['id'] = data['___id'];
+		  ndata['updatedSnap'] = {status:w,objectId:data['objectId']};
+		 // ndata['updateSnapType'] = 'status';
+		  self.fireEvent('modifySnapAndRefresh_step1',ndata);
 	   }
 	});
 	confirmAlert.show();
